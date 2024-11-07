@@ -9,7 +9,7 @@ You can follow this simple project structure to add OCLinChoco and Choco to your
 ```bash
 gradle init
 git init
-git add submodule \<URL\> OCLinChoco
+git add submodule git@github.com:ArtemisLemon/OCLinChoco.git OCLinChoco
 ```
 
 ### Configuring Gradle
