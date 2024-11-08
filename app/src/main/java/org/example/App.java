@@ -3,8 +3,10 @@
  */
 package org.example;
 
+import org.oclinchoco.*;
+import org.oclinchoco.CSP;
 import org.oclinchoco.ReferenceTable;
-import org.chocosolver.solver.Model;
+import org.oclinchoco.NavCSP;
 
 public class App {
     public String getGreeting() {
@@ -14,12 +16,14 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
 
-        int numA = 10; int cardA2B=3;
-        int numB = 23; int cardB2A=1;
+        int numA = 10; int minCardA2B=0; int maxCardA2B=3;
+        int numB = 23; int minCardB2C=0; int maxCardB2C=1;
+        int numC = 3;
 
-        Model csp = new Model();
+        CSP csp = new CSP();
 
-        ReferenceTable a2b = new ReferenceTable(csp,numA,cardA2B,numB);
-        ReferenceTable b2a = new ReferenceTable(csp,numB,cardB2A,numA);
+        ReferenceTable a2b = new ReferenceTable(csp,numA,maxCardA2B,minCardA2B,numB);
+        ReferenceTable b2c = new ReferenceTable(csp,numC,maxCardB2C,minCardB2C,numC);
+        NavCSP a12b2c = new NavCSP(csp,a2b.adjList(1),b2c);
     }
 }
