@@ -7,6 +7,7 @@ import org.oclinchoco.*;
 import org.oclinchoco.CSP;
 import org.oclinchoco.ReferenceTable;
 import org.oclinchoco.NavCSP;
+import org.oclinchoco.nodecsp.SizeNode;
 
 public class App {
     public String getGreeting() {
@@ -18,12 +19,22 @@ public class App {
 
         int numA = 10; int minCardA2B=0; int maxCardA2B=3;
         int numB = 23; int minCardB2C=0; int maxCardB2C=1;
-        int numC = 3;
+        int numC = 3; int minCardC2D=0; int maxCardC2D=3;
+        int numD = 4;
 
         CSP csp = new CSP();
 
+        //UMLCSP
         ReferenceTable a2b = new ReferenceTable(csp,numA,maxCardA2B,minCardA2B,numB);
-        ReferenceTable b2c = new ReferenceTable(csp,numC,maxCardB2C,minCardB2C,numC);
+        ReferenceTable b2c = new ReferenceTable(csp,numB,maxCardB2C,minCardB2C,numC);
+        ReferenceTable c2d = new ReferenceTable(csp,numC,maxCardC2D,minCardC2D,numD);
+        
+        //OCLCSP
         NavCSP a12b2c = new NavCSP(csp,a2b.adjList(1),b2c);
+        NavCSP a12b2c2d = new NavCSP(csp, a12b2c,c2d);
+
+        SizeNode a12b2c2dSize = new SizeNode(a12b2c2d);
+
+        csp.model().getSolver().printStatistics();
     }
 }
