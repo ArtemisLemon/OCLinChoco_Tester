@@ -29,7 +29,7 @@ public class App {
         ReferenceTable b2c = new ReferenceTable(csp,numB,maxCardB2C,minCardB2C,numC);
         ReferenceTable c2d = new ReferenceTable(csp,numC,maxCardC2D,minCardC2D,numD);
         
-        //OCLCSP
+        //OCLCSP a1.b.c.d.size()
         NavCSP a12b2c = new NavCSP(csp,a2b.adjList(1),b2c);
         NavCSP a12b2c2d = new NavCSP(csp, a12b2c,c2d);
 
