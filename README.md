@@ -2,6 +2,15 @@
 
 Essentially a App.java class with a main funtion, to test [OCLinChoco](https://github.com/ArtemisLemon/OCLinChoco)
 
+## Clone, Build, Run
+```bash
+git clone git@github.com:ArtemisLemon/OCLinChoco_Tester.git --recursive
+git submodule update --init #if you forgot --recursive
+
+./gradlew build
+./gradlew run
+```
+
 ## How to Include OCLinChoco
 You can follow this simple project structure to add OCLinChoco and Choco to your Gradle App
 
