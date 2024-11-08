@@ -5,11 +5,12 @@ Essentially a App.java class with a main funtion, to test [OCLinChoco](https://g
 ## Clone, Build, Run
 ```bash
 git clone git@github.com:ArtemisLemon/OCLinChoco_Tester.git --recursive
-git submodule update --init #if you forgot --recursive
 
+cd OCLinChoco_Tester
+git submodule update --init #if you forgot --recursive
 ./gradlew build
 
-cd app
+cd OCLinChoco_Tester/app
 ./gradlew run
 ```
 
