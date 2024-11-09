@@ -8,6 +8,7 @@ git clone git@github.com:ArtemisLemon/OCLinChoco_Tester.git --recursive
 
 cd OCLinChoco_Tester
 git submodule update --init #if you forgot --recursive
+git submodule update --remote #to get latest version of OCLinChoco
 ./gradlew build
 
 cd OCLinChoco_Tester/app
