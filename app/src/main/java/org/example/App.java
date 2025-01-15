@@ -3,11 +3,14 @@
  */
 package org.example;
 
+import javax.xml.transform.Source;
+
 import org.oclinchoco.*;
 import org.oclinchoco.CSP;
 import org.oclinchoco.ReferenceTable;
 import org.oclinchoco.NavCSP;
 import org.oclinchoco.nodecsp.SizeNode;
+import org.oclinchoco.source.PtrSource;
 
 public class App {
     public String getGreeting() {
@@ -18,8 +21,8 @@ public class App {
         System.out.println(new App().getGreeting());
 
         int numA = 10; int minCardA2B=0; int maxCardA2B=3;
-        int numB = 23; int minCardB2C=0; int maxCardB2C=1;
-        int numC = 3; int minCardC2D=0; int maxCardC2D=3;
+        int numB = 23; int minCardB2C=1; int maxCardB2C=1;
+        int numC = 3; int minCardC2D=1; int maxCardC2D=3;
         int numD = 4;
 
         CSP csp = new CSP();
@@ -31,10 +34,13 @@ public class App {
         
         //OCLCSP a1.b.c.d.size()
         NavCSP a12b2c = new NavCSP(csp,a2b.adjList(1),b2c);
-        NavCSP a12b2c2d = new NavCSP(csp, a12b2c,c2d);
+        NavCSP a12b2c2d = new NavCSP(csp,a12b2c,c2d);
 
-        SizeNode a12b2c2dSize = new SizeNode(a12b2c2d);
+        SizeNode a12b2c2dSize = new SizeNode(csp,a12b2c2d);
 
+        System.out.println(a2b);
+        System.out.println(b2c);
+        System.out.println(c2d);
         csp.model().getSolver().printStatistics();
     }
 }
